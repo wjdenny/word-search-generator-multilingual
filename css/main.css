@@ -1,0 +1,50 @@
+/* Configuration options container */
+#config { display: block; padding-bottom: 2rem }
+fieldset { margin: 0 auto; display: block; text-align: center; }
+
+/* Positioning of larger panels */
+#config ul { list-style: none; margin: 0; padding: 0; display: inline-block  }
+.config-panel-words { min-width: 280px; padding-right: 2rem; padding-bottom: 2rem; display: inline-block }
+.config-panel-other { display: inline-block }
+
+/* Positioning of labels */
+.config-panel-other label { display: inline-block; width: 100px; text-align: left }
+.config-panel-other li { text-align: left }
+label[for="directions-group"] { vertical-align: top}
+
+/* Styling for form elements */
+#words { height: 200px; width: 20em; display: block; margin: 0 auto }
+#submit { display: block; margin: 1em auto; width: 100%; margin-top: 1em }
+.config-panel-other > li { margin: 0.2rem auto }
+#directions-group { display: inline-block }
+#directions-group ul { display: inline-block; vertical-align: top; }
+#directions-group input { vertical-align: top; }
+.key-highlight { background-color: gray }
+#showKey { vertical-align: middle }
+
+/* Styles for the crossword */
+#container { text-align: center }
+#result { display: inline-block }
+#result table { border: solid 1pt black; margin: 0 auto; font-size: 18pt; width: 15em; height: 15em; border-collapse: collapse; table-layout: fixed }
+#result td { height: 35px; width: 35px; padding: 1.1px; text-align: center }
+
+/* Styles for wordList */
+#wordList { display: inline-block; vertical-align: top }
+#wordList ul { margin-top: 0; text-align: left }
+/* #wordList { text-align: center; width: 62.8%; margin: 0 auto }
+#wordList li { display: inline-block; padding-right: 2em }
+.unicode-range { display: inline-block } */
+
+/* Style toggle for unicode-option visibility */
+#unicode-option { visibility: hidden }
+#unicode-option.selected { visibility: visible}
+
+/* Styling label text */
+label[for="words"] { text-align: left; display: block; padding-bottom: 1em; width: 266px; }
+.comment { font-style: italic }
+#directions-group label { width: 50px }
+
+/* Error message container positioning */
+#errorMessageContainer { display: block; color: red; text-align: left }
+
+@media print { #config { display: none } }
