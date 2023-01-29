@@ -4,6 +4,6 @@
 
 #result table { margin: 0 auto }
 #result table td { border: none }
-#hints ul { padding-top: 12px; text-align: center }
+#hints ul { padding-top: 12px; width: 420px; margin: 0 auto; columns: 3 }
 
 @media print { #config { display: none }}
