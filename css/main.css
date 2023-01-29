@@ -3,7 +3,7 @@
 .u-visible { display: block }
 
 #result table { margin: 0 auto }
-#result table td { border: none }
+#result table td { border: none; text-align: center }
 #hints ul { padding-top: 12px; width: 420px; margin: 0 auto; columns: 3 }
 
 .key-highlight { background-color: gold }
