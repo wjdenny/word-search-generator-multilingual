@@ -17,6 +17,8 @@ const clearErrorMessages = () => {
 const generateWordSearch = (e) => {
     e.preventDefault();
 
+    clearErrorMessages();
+
     let words = document.getElementById('words').value.split(`\n`);
     let sizeX = Number(document.getElementById('size_x').value)
     let sizeY = Number(document.getElementById('size_y').value) ? Number(document.getElementById('size_y').value) : sizeX
