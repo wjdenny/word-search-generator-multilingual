@@ -13,6 +13,7 @@ const onFillSetChange = (e) => {
 
     switch(fillSet) {
         case 'korean':
+        case 'words':
             freqData.disabled = false;
             break;
         default: 
@@ -71,7 +72,20 @@ const generateWordSearch = (e) => {
         fillFn = () => WordSearch.getRandomCharacterFromUnicodeRange(unicodeFrom, unicodeTo)
     }
 
-    else if (fillSet === `words`) { 
+    else if (fillSet === `words` && freqData) { 
+        // Get a list of all of the characters used in #words and their frequencies
+        let chars = document.getElementById('words').value.split(`\n`).map(w => w.split(/\s?,\s?/)[0]).join(``).split(``)
+        let data = chars.reduce((a, e) => {
+            a[e] = a[e] ? a[e] + 1 : 1
+            return a
+        }, {})
+
+        console.log(data)
+        //.filter((e, i, a) => a.indexOf(e) === i)
+        fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(Object.keys(data), Object.values(data).map(e => e / chars.length))  
+    }
+
+    else if (fillSet === `words` && !freqData) { 
         // Get a list of all of the characters used in #words
         let chars = document.getElementById('words').value.split(`\n`).map(w => w.split(/\s?,\s?/)[0]).join(``).split(``).filter((e, i, a) => a.indexOf(e) === i)
         fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(chars)
