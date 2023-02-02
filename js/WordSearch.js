@@ -16,10 +16,10 @@ class WordSearch {
             let key = words[i][1] ? words[i][1] : words[i][0]
 
             let success = false;
-
+            
             for (let tries = 0; tries < maxTries; tries++) {
-                let x = Math.floor(Math.random() * size[0]);
-                let y = Math.floor(Math.random() * size[1]);
+                let x = Math.floor(Math.random() * size[1]);
+                let y = Math.floor(Math.random() * size[0]);
                 let direction = directions[Math.floor(Math.random() * dn)];
 
                 if (this.checkWordFit(x, y, direction, word)) { this.insertWord(x, y, direction, word); success = true; this.wordList.push(key); break }
