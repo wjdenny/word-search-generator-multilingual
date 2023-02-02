@@ -41,8 +41,7 @@
                             <div class="row">
                                 <label for="fillSet">Fill set</label>
                                 <select id="fillSet" name="fillSet">
-                                    <option value="koreanFreq">Korean syllables by frequency</option>
-                                    <option value="koreanFlat">Korean syllables with equal probabilities</option>
+                                    <option value="korean">Korean syllables</option>
                                     <option value="arabic">Standard Arabic characters</option>
                                     <option value="ascii-upper">English (ASCII) uppercase letters</option>
                                     <option value="ascii-lower">English (ASCII) lowercase letters</option>
@@ -50,6 +49,7 @@
                                     <option value="words">Use characters from word list</option>
                                     <option value="none">Leave unused cells empty</option>
                                 </select> 
+                                <label for="freqData"><input type="checkbox" id="freqData" name="freqData"><span class="label-body">based on frequency data</span></label>
                             </div>
                             <div class="row" id="unicode-range">
                                 <label for="unicode_from">Unicode range</label>

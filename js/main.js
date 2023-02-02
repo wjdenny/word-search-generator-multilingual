@@ -4,8 +4,22 @@ const toggleShowAnswers = (e) => {
     else { Array.from(document.getElementsByClassName('key-highlight')).forEach(el => el.className = 'key') }
 }
 
-// event listener for highlighting the target cells in the word search
-const toggleUnicodeRangeVisibility = (e) => document.getElementById('unicode-range').setAttribute('class', document.getElementById('fillSet').value === 'unicode' ? 'u-visible' : '') 
+
+const onFillSetChange = (e) => {
+    let fillSet = document.getElementById('fillSet').value
+    let freqData = document.getElementById('freqData')
+
+    document.getElementById('unicode-range').setAttribute('class', fillSet === 'unicode' ? 'u-visible' : '')
+
+    switch(fillSet) {
+        case 'korean':
+            freqData.disabled = false;
+            break;
+        default: 
+            freqData.disabled = true;         
+            break;
+    }
+}
 
 // clear all previous error messages
 const clearErrorMessages = () => { 
@@ -35,15 +49,18 @@ const generateWordSearch = (e) => {
     if (document.getElementById('sw').checked) { directions.push('sw') }
     if (document.getElementById('nw').checked) { directions.push('nw') }
     
+
+    let freqData = document.getElementById('freqData').checked && !document.getElementById('freqData').disabled
+
     let fillSet = document.getElementById('fillSet').value
     let fillFn = () => `?`
 
-    if (fillSet === `koreanFreq`) {
+    if (fillSet === `korean` && freqData) {
         ({ syllables, probabilities } = getKoreanSyllableSet())
         fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(syllables, probabilities)
     }
 
-    else if (fillSet === `koreanFlat`) {
+    else if (fillSet === `korean` && !freqData) {
         ({ syllables } = getKoreanSyllableSet());
         fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(syllables)
     }
@@ -97,7 +114,7 @@ const generateWordSearch = (e) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('fillSet').addEventListener(`change`, toggleUnicodeRangeVisibility);
+    document.getElementById('fillSet').addEventListener(`change`, onFillSetChange);
     document.getElementById('showKey').addEventListener('change', toggleShowAnswers);
     document.getElementById('generate').addEventListener(`click`, generateWordSearch)
 })
