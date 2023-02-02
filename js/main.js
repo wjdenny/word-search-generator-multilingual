@@ -60,6 +60,15 @@ const generateWordSearch = (e) => {
         fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(chars)
     }
 
+    else if (fillSet === `arabic`) { 
+        let chars = [];
+        for (let i = 1569; i <= 1610; i++) {
+            if (i === 1600) { break }
+            else { chars.push(String.fromCharCode(i)) }
+        }
+        fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(chars, chars.map(e => 1 / chars.length))
+     }
+
     else if (fillSet === `none`) { fillFn = () => `` }
     
     let g = new WordSearch({ size: [sizeX, sizeY], fillFn, words, directions, maxTries });
