@@ -69,6 +69,9 @@ const generateWordSearch = (e) => {
         fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(chars, chars.map(e => 1 / chars.length))
      }
 
+    else if (fillSet === `ascii-upper`) { fillFn = () => WordSearch.getRandomCharacterFromUnicodeRange(65, 90) }
+    else if (fillSet === `ascii-lower`) { fillFn = () => WordSearch.getRandomCharacterFromUnicodeRange(97, 122) }
+
     else if (fillSet === `none`) { fillFn = () => `` }
     
     let g = new WordSearch({ size: [sizeX, sizeY], fillFn, words, directions, maxTries });
