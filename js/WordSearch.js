@@ -69,17 +69,27 @@ class WordSearch {
 
     toString() { return this.grid.map(x => x.join(``)).join(`\n`) }
     toHTML() {
-        let table = document.createElement('table')
-        for (let x = 0, mx = this.grid.length; x < mx; x++) {
-            let tr = document.createElement('tr');
-            for (let y = 0, my = this.grid[x].length; y < my; y++) {
-                let td = document.createElement('td');
-                td.textContent = this.grid[x][y];
-                if (this.key.find(e => JSON.stringify(e) === `[${x},${y}]`)) { td.setAttribute('class', 'key') }
-                tr.appendChild(td)
-            }
-            table.appendChild(tr)
-        }
+        let table = document.createElement(`table`);
+        
+        let grid = this.grid.map(x => {
+            let tr = document.createElement(`tr`)
+            x.map(y => {
+                let td = document.createElement(`td`);
+                td.textContent = y;
+                tr.appendChild(td);
+                return td
+            });
+
+            table.appendChild(tr);
+            return tr
+        })
+
+        this.key.forEach(word => {
+            word.forEach(letter => {
+                let [ x, y, i, className ] = letter;
+                grid[x].childNodes[y].className = className
+            })
+        })
 
         return table
      }
@@ -103,13 +113,19 @@ class WordSearch {
 
     insertWord(x, y, direction, word) { 
         let { dx, dy } = WordSearch.direction[direction]
-
+        let key = []
         for (let i = 0, n = word.length; i < n; i++) {
             let nx = x + i * dx;
             let ny = y + i * dy;
             this.grid[nx][ny] = word[i];
-            this.key.push([nx, ny])
+            let position = `mid`;
+            if (i == 0) { position = `first`}
+            else if (i == (n-1)) { position = `last` }
+
+            key.push([nx, ny, i, `${direction}-${position}` ])
           }
+
+          this.key.push(key)
     }
 }
 
