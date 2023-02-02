@@ -87,7 +87,7 @@ class WordSearch {
         this.key.forEach(word => {
             word.forEach(letter => {
                 let [ x, y, i, className ] = letter;
-                grid[x].childNodes[y].className = className
+                grid[x].childNodes[y].className = `${className} u-highlight`
             })
         })
 

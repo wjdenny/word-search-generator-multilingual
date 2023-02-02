@@ -1,7 +1,7 @@
 // event listener for the fill set dropdown to toggle showing unicode range form fields
 const toggleShowAnswers = (e) => {
-    if (document.getElementById('showKey').checked) { Array.from(document.getElementsByClassName('key')).forEach(el => el.className = 'key-highlight') }
-    else { Array.from(document.getElementsByClassName('key-highlight')).forEach(el => el.className = 'key') }
+    if (document.getElementById('showKey').checked) { Array.from(document.getElementsByClassName('u-highlight')).forEach(el => el.className = `${el.className} u-highlight-on`) }
+    else { Array.from(document.getElementsByClassName('u-highlight-on')).forEach(el => el.className = el.className.split(` `).slice(0,2).join(` `)) }
 }
 
 
