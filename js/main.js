@@ -5,7 +5,7 @@ const toggleShowAnswers = (e) => {
 }
 
 // event listener for highlighting the target cells in the word search
-const toggleUnicodeRangeVisibility = (e) => document.getElementById('unicode-option').setAttribute('class', document.getElementById('fillSet').value === 'unicode' ? 'u-visible' : '') 
+const toggleUnicodeRangeVisibility = (e) => document.getElementById('unicode-range').setAttribute('class', document.getElementById('fillSet').value === 'unicode' ? 'u-visible' : '') 
 
 // clear all previous error messages
 const clearErrorMessages = () => { 

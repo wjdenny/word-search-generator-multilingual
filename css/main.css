@@ -1,6 +1,6 @@
 #words { height: 26rem }
 #unicode-range { display: none }
-.u-visible { display: block }
+.u-visible { display: block !important }
 
 #result table { margin: 0 auto }
 #result table td { border: none; text-align: center }
