@@ -3,6 +3,11 @@ This project is a multilingual word search puzzle generator in your browser. The
 
 There's no interaction for solving the puzzle, and it's fairly easy to find out the answer key while still in the browser. It's meant to be printed, either on paper or as a PDF and then used on a tablet.
 
+## Development environment
+I use Jekyll to serve the project as this is easily handled through GitHub
+Pages. For local deployment, you can clone the repo, install Jekyll on your
+system globally, and run `jekyll serve` in the project directory.
+
 ## Filled with probabilities
 One of the presets uses Korean syllable frequency data from [Dr. Kang](http://nlp.kookmin.ac.kr/) from [Kookmin University](https://www.kookmin.ac.kr/).
 
