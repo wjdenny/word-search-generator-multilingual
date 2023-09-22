@@ -4,6 +4,7 @@ class WordSearch {
         this.grid = new Array(size[1]).fill(null).map(() => new Array(size[0]).fill(null).map(() => null));
         this.key = [];
         this.wordList = [];
+        this.directions = directions;
 
         let dn = directions.length
 

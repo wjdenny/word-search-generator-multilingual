@@ -116,14 +116,35 @@ const generateWordSearch = (e) => {
     document.getElementById('result').replaceChildren(result);
     if (document.getElementById('showKey').checked) { toggleShowAnswers() }
 
-    let wordListContainer = document.getElementById(`hints`);
+    let wordListContainer = document.getElementById(`hints-words`);
+    
     let ul = document.createElement(`ul`)
+    
     g.wordList.forEach(word => {
         let li = document.createElement(`li`);
         li.innerText = word;
         ul.appendChild(li)
     })
+    
     wordListContainer.replaceChildren(ul)
+    
+    
+    let directionListContainer = document.getElementById(`hints-directions`);
+    let directionsList = document.createElement(`div`)
+    directionsList.innerText = `Directions: ${g.directions.map(e => {
+        return { 
+            ltr: `→`,
+            ttb: `↓`,
+            rtl: `←`,
+            btt: `↑`,
+            ne: `↗`,
+            se: `↘`,
+            sw: `↙`,
+            nw: `↖`
+        }[e]
+    }).join(` `)}`
+    directionsList.setAttribute('id', 'hints-directions')
+    directionListContainer.replaceChildren(directionsList);
 
 }
 
