@@ -49,7 +49,10 @@
                                     <option value="words">Use characters from word list</option>
                                     <option value="none">Leave unused cells empty</option>
                                 </select> 
-                                <label for="freqData"><input type="checkbox" id="freqData" name="freqData"><span class="label-body">based on frequency data</span></label>
+                                <label for="freqData"><input type="checkbox"
+                                id="freqData" name="freqData"><span
+                                class="label-body">Use sampling based on
+                                frequency data</span></label>
                             </div>
                             <div class="row" id="unicode-range">
                                 <label for="unicode_from">Unicode range</label>
@@ -76,6 +79,14 @@
                                     <label for="sw"><input type="checkbox" id="sw" name="directions"><span class="label-body">&swarr;</span></label>
                                     <label for="nw"><input type="checkbox" id="nw" name="directions"><span class="label-body">&nwarr;</span></label>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <label for="shuffle">
+                                    <input type="checkbox" id="shuffle" name
+                                    ="shuffle">
+                                    <span class="label-body">Shuffle hints in
+                                    the hint list</span>
+                                </label>
                             </div>
                             <div class="row">
                                 <button class="button-primary" id="generate">Generate</button>

@@ -120,6 +120,13 @@ const generateWordSearch = (e) => {
     
     let ul = document.createElement(`ul`)
     
+    if (document.getElementById('shuffle').checked) {
+        g.wordList = g.wordList
+        .map(v => ({ v, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ v }) => v)
+    }
+
     g.wordList.forEach(word => {
         let li = document.createElement(`li`);
         li.innerText = word;
