@@ -9,7 +9,7 @@
     margin: 0 auto;
     display: flex; 
     justify-content: center;
-    font-size: min(15px, 5vw)
+    font-size: min(18px, 2vw)
 }
 
 #hints-directions { 
