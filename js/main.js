@@ -28,18 +28,19 @@ const clearErrorMessages = () => {
     while (el.firstChild) { el.removeChild(el.lastChild) }
 }
 
-// generate the word search
-const generateWordSearch = (e) => {
-    e.preventDefault();
-
-    clearErrorMessages();
-
+const getUserConfig = () => {
+    // Extract the list of words in #words.
     let words = document.getElementById('words').value.split(`\n`);
+
+    // Extract the dimensiosn of the grid from #size_x and #size_y. If #size_y
+    // is not provided, recycle the value from size_x to make a square.
     let sizeX = Number(document.getElementById('size_x').value)
     let sizeY = Number(document.getElementById('size_y').value) ? Number(document.getElementById('size_y').value) : sizeX
+
+    // Extract the maximum number of tries for placing each word from #maxTries.
     let maxTries = Number(document.getElementById('maxTries').value)
-    
-    // get an array of allowed directions
+
+    // Extract the allowed directions.
     let directions = []
     if (document.getElementById('ltr').checked) { directions.push('ltr') }
     if (document.getElementById('ttb').checked) { directions.push('ttb') }
@@ -49,10 +50,11 @@ const generateWordSearch = (e) => {
     if (document.getElementById('se').checked) { directions.push('se') }
     if (document.getElementById('sw').checked) { directions.push('sw') }
     if (document.getElementById('nw').checked) { directions.push('nw') }
-    
 
+    // Extract choice for using frequency sampling.
     let freqData = document.getElementById('freqData').checked && !document.getElementById('freqData').disabled
 
+    // Generate a fill function for the distractors.
     let fillSet = document.getElementById('fillSet').value
     let fillFn = () => `?`
 
@@ -80,8 +82,6 @@ const generateWordSearch = (e) => {
             return a
         }, {})
 
-        console.log(data)
-        //.filter((e, i, a) => a.indexOf(e) === i)
         fillFn = () => WordSearch.getRandomCharacterFromFrequencyList(Object.keys(data), Object.values(data).map(e => e / chars.length))  
     }
 
@@ -104,13 +104,24 @@ const generateWordSearch = (e) => {
     else if (fillSet === `ascii-lower`) { fillFn = () => WordSearch.getRandomCharacterFromUnicodeRange(97, 122) }
 
     else if (fillSet === `none`) { fillFn = () => `` }
+
+    return { size: [sizeX, sizeY], fillFn, words, directions, maxTries }
+}
+
+// generate the word search
+const generateWordSearch = (e) => {
+    e.preventDefault();
+
+    clearErrorMessages();
+
+    let config = getUserConfig();    
     
-    let g = new WordSearch({ size: [sizeX, sizeY], fillFn, words, directions, maxTries });
+    let g = new WordSearch(config);
     let result = g.toHTML();
 
-    if (sizeX <= 20) { result.className = "sm" }
-    else if (sizeX <= 30 ) { result.className = "md" }
-    else if (sizeX <= 40) { result.className = "lg" }
+    if (config.size[0] <= 20) { result.className = "sm" }
+    else if (config.size[0] <= 30 ) { result.className = "md" }
+    else if (config.size[0] <= 40) { result.className = "lg" }
     else { result.className = "xl" }
 
     document.getElementById('result').replaceChildren(result);
