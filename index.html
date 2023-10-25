@@ -16,6 +16,17 @@
                 <h1>Multilingual Word Search Generator</h1>
                 <div class="row">
                     <div class="six columns">
+                        <label for="title">Title</label>
+                        <input type="text" name="puzzle_title" id="puzzle_title"
+                        size="40">
+                    </div>
+                    <div class="six columns">
+                        <label for="title">Description</label>
+                        <textarea id="puzzle_desc" class="u-full-width"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
                         <label for="words">Enter one word on each line.</label>
                         <span class="comment">You can use a hint by separating it from the target word with a comma.</span>
                         <textarea id="words" class="u-full-width"></textarea>
@@ -100,6 +111,13 @@
             <hr />
         </section>
         <section>
+            <div class="container">
+                <div class="row">
+                    <div class="twelve columns">
+                        <h1 id="puzzle_title_display"></h1>
+                        <div id="puzzle_desc_display"></div>
+                    </div>
+                </div>
             <div class="container">
                 <div class="row">
                     <div class="twelve columns">

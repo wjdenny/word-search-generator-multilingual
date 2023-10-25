@@ -1,5 +1,8 @@
 class WordSearch {
-    constructor({ size, fillFn, words, directions, maxTries = 50 }) {
+    constructor({ title, desc, size, fillFn, words, directions, maxTries = 50 }) {
+        this.title = title ?? `Untitled Puzzle`
+        this.desc = desc ?? `No description`
+
         // Build the grid as a 2-dimensional Array.
         this.grid = new Array(size[1]).fill(null).map(() => new Array(size[0]).fill(null).map(() => null));
         this.key = [];

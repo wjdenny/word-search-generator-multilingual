@@ -60,6 +60,11 @@
 
 th:last-child, td:last-child, th:first-child, td:first-child { padding: 12px 15px }
 
+#puzzle_title_display, #puzzle_desc_display {
+    margin: 0 auto;
+    text-align: center
+}
+
 @media print { 
     @page { margin: 0.5in; size: letter }
     #config { display: none }

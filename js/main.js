@@ -29,6 +29,12 @@ const clearErrorMessages = () => {
 }
 
 const getUserConfig = () => {
+    // Extra the title
+    let title = document.getElementById('puzzle_title').value
+
+    // Extract the description.
+    let desc = document.getElementById('puzzle_desc').value
+
     // Extract the list of words in #words.
     let words = document.getElementById('words').value.split(`\n`);
 
@@ -105,13 +111,12 @@ const getUserConfig = () => {
 
     else if (fillSet === `none`) { fillFn = () => `` }
 
-    return { size: [sizeX, sizeY], fillFn, words, directions, maxTries }
+    return { title, desc, size: [sizeX, sizeY], fillFn, words, directions, maxTries }
 }
 
 // generate the word search
 const generateWordSearch = (e) => {
     e.preventDefault();
-
     clearErrorMessages();
 
     let config = getUserConfig();    
@@ -164,6 +169,8 @@ const generateWordSearch = (e) => {
     directionsList.setAttribute('id', 'hints-directions')
     directionListContainer.replaceChildren(directionsList);
 
+    document.getElementById(`puzzle_title_display`).innerText = config.title
+    document.getElementById(`puzzle_desc_display`).innerText = config.desc
 }
 
 document.addEventListener("DOMContentLoaded", () => {
